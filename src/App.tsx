@@ -2,7 +2,6 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
   const [todoText, setTodoText] = useState('')
   const [todos, setTodos] = useState<string[]>([])
 
@@ -22,11 +21,8 @@ function App() {
     <main className="app-shell">
       <section className="panel hero-panel">
         <p className="eyebrow">Sandcastle task board</p>
-        <h1>Track a todo and keep the counter handy</h1>
-        <p className="lede">
-          Add a task, see it appear in the list, and use the counter buttons from the
-          previous issue.
-        </p>
+        <h1>Track todos in one focused workspace</h1>
+        <p className="lede">Add a task, see it appear in the list, and keep momentum going.</p>
       </section>
 
       <section className="panel todo-panel" aria-labelledby="todo-heading">
@@ -69,33 +65,6 @@ function App() {
             <li className="todo-empty">No todos yet. Add the first one above.</li>
           )}
         </ul>
-      </section>
-
-      <section className="panel counter-panel" aria-labelledby="counter-heading">
-        <div className="panel-heading">
-          <div>
-            <p className="eyebrow">Counter</p>
-            <h2 id="counter-heading">Keep the existing count flow</h2>
-          </div>
-          <span className="status-pill">Current total</span>
-        </div>
-
-        <div className="counter-row">
-          <button
-            type="button"
-            className="counter-button"
-            onClick={() => setCount((currentCount) => currentCount + 1)}
-          >
-            Count is {count}
-          </button>
-          <button
-            type="button"
-            className="counter-button secondary"
-            onClick={() => setCount((currentCount) => currentCount - 1)}
-          >
-            Decrease count
-          </button>
-        </div>
       </section>
     </main>
   )
