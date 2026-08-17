@@ -37,7 +37,8 @@ Pick the highest-priority open issue that is not blocked by another open issue.
    - List key decisions made
    - List files changed
    - Note any blockers for the next iteration
-6. **Close** — close the issue with `gh issue close <ID> --comment "Completed by Sandcastle"` explaining what was done.
+6. **Submit PR** — after the commit is complete, push the branch and submit a pull request with `gh pr create --fill`.
+7. **Close** — close the issue with `gh issue close <ID> --comment "Completed by Sandcastle"` explaining what was done.
 
 ## Rules
 
