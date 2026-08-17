@@ -1,9 +1,31 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
+
+const TODOS_STORAGE_KEY = 'todos'
+
+function loadTodos() {
+  try {
+    const storedTodos = localStorage.getItem(TODOS_STORAGE_KEY)
+    if (!storedTodos) {
+      return []
+    }
+
+    const parsedTodos = JSON.parse(storedTodos)
+    return Array.isArray(parsedTodos)
+      ? parsedTodos.filter((todo): todo is string => typeof todo === 'string')
+      : []
+  } catch {
+    return []
+  }
+}
 
 function App() {
   const [todoText, setTodoText] = useState('')
-  const [todos, setTodos] = useState<string[]>([])
+  const [todos, setTodos] = useState<string[]>(() => loadTodos())
+
+  useEffect(() => {
+    localStorage.setItem(TODOS_STORAGE_KEY, JSON.stringify(todos))
+  }, [todos])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
